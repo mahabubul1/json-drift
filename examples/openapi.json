@@ -1,0 +1,49 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Shop API", "version": "1.0.0" },
+  "paths": {
+    "/api/users/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "data": { "$ref": "#/components/schemas/User" } },
+                  "required": ["data"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": ["id", "name", "email", "is_active", "orders"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "is_active": { "type": "boolean" },
+          "orders": { "type": "array", "items": { "$ref": "#/components/schemas/Order" } }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "required": ["id", "total", "status"],
+        "properties": {
+          "id": { "type": "integer" },
+          "total": { "type": "number" },
+          "status": { "type": "string", "enum": ["paid", "pending", "cancelled"] },
+          "shipped_at": { "type": "string", "format": "date-time", "nullable": true }
+        }
+      }
+    }
+  }
+}

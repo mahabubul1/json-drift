@@ -1,0 +1,18 @@
+{
+  "data": {
+    "id": "42",
+    "fullName": "Rahim Uddin",
+    "email": null,
+    "is_active": 1,
+    "balance": "1250.50",
+    "created_at": "10/01/2026 08:30",
+    "settings": [],
+    "role": "admin",
+    "phone": "01712345678",
+    "orders": [
+      { "id": 1, "total": "499.00", "status": "paid", "shippedAt": "2026-01-12T10:00:00Z" },
+      { "id": 2, "total": "120.75", "status": "refunded", "shippedAt": null }
+    ]
+  },
+  "meta": { "request_id": "9a0d77" }
+}

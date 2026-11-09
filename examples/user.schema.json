@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GET /api/users/{id}",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["id", "name", "email", "is_active", "balance", "created_at", "settings", "role", "orders"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "is_active": { "type": "boolean" },
+        "balance": { "type": "number" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "settings": { "type": "object" },
+        "role": { "type": "string", "enum": ["admin", "staff", "customer"] },
+        "avatar_url": { "type": ["string", "null"], "format": "uri" },
+        "orders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "total", "status", "shipped_at"],
+            "properties": {
+              "id": { "type": "integer" },
+              "total": { "type": "number" },
+              "status": { "type": "string", "enum": ["paid", "pending", "cancelled"] },
+              "shipped_at": { "type": ["string", "null"], "format": "date-time" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
